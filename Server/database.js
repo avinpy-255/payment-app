@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/paymodo")
 
 const  userSchema = new mongoose.Schema({
-    first_name:{
+    firstName:{
         type: String,
         required: true
     },
-    last_name:{
+    lastName:{
         type: String,
         required: true
     },
