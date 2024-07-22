@@ -1,10 +1,11 @@
 const express = require('express');
+const router = express.Router();
 const zod = require('zod');
 const {User, Account} = require('../database')
 const jwt = require('jsonwebtoken')
-const authmiddleware = require('../middleware');
+const{ authmiddleware} = require('../middleware');
 const JWT_SECRET = require('../config');
-const router = express.Router();
+
 
 const signupSchema = zod.object({
     username: zod.string().email(),
@@ -84,19 +85,17 @@ router.post('/signin', async (req, res) => {
 
 })
 
-router.put('/',authmiddleware, async (req, res) => {
+router.put("/", authmiddleware, async(req, res)=> {
   const body = req.body;
   const {userId} = req.user;
   const {success} = updateBody.safeParse(body);
 
-  if(!success) {
-    res.status(411).json ({
-      message: "Error while Updating"
-    })
+  if (!success) {
+      res.status(411).json({message: "Error while updating information"})
   }
-
+  
   const user = await User.findOneAndUpdate({_id: userId}, body);
-  res.status(200).json({message: "User updated successfully", user});
+  res.status(200).json({message: "Updated successfully"});
 })
 
 router.get("/bulk", async (req, res) => {

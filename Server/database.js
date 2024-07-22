@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb://localhost:27017/paymodo")
+
+const connectDB = async () => {
+    await mongoose.connect("mongodb://localhost:27017/paymodo");
+    console.log('DB connected');
+}
 
 const  userSchema = new mongoose.Schema({
     firstName:{
