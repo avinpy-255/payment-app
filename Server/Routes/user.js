@@ -1,6 +1,8 @@
 const express = require('express');
 const zod = require('zod');
-const {User} = require('../database') 
+const {User, Account} = require('../database')
+const jwt = require('jsonwebtoken')
+const authmiddleware = require('../middleware');
 const JWT_SECRET = require('../config');
 const router = express.Router();
 
@@ -82,7 +84,7 @@ router.post('/signin', async (req, res) => {
 
 })
 
-router.put('/', async (req, res) => {
+router.put('/',authmiddleware, async (req, res) => {
   const body = req.body;
   const {userId} = req.user;
   const {success} = updateBody.safeParse(body);
