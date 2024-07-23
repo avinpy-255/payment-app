@@ -1,5 +1,5 @@
 const express = require("express");
-const mainRouter = require("./Routes")
+const mainRouter = require("./Routes/index")
 const {connectDB} = require('./database')
 const cors = require("cors")
 const app = express();
@@ -11,10 +11,11 @@ app.use(express.json())
 
 
 
-app.get('/api/v1', mainRouter);
-app.listen(3000, ()=>{
+app.use('/api/v1', mainRouter);
+
+app.listen(8080, ()=>{
     connectDB();
-    console.log("Server Running on port 3000");
+    console.log("Server Running on port 8080");
 })
 
 

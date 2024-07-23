@@ -4,9 +4,6 @@ const accountRouter = require("./account")
 const router = express.Router();
 
 
-router.get("/ping", (req,res)=> {
-    res.send("pong");
-})
 
 router.use("/user", userRouter);
 router.use("/account", accountRouter);

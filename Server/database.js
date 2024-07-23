@@ -7,42 +7,53 @@ const connectDB = async () => {
 }
 
 const  userSchema = new mongoose.Schema({
-    firstName:{
-        type: String,
-        required: true
-    },
-    lastName:{
-        type: String,
-        required: true
-    },
-    email:{
+    username: {
         type: String,
         required: true,
+        unique: true,
+        trim: true,
+        lowercase: true,
+        minLength: 3,
+        maxLength: 30
     },
-    password:{
+    password: {
         type: String,
         required: true,
-        minlength: 8
+        minLength: 6
     },
+    firstName: {
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 50
+    },
+    lastName: {
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 50
+    }
 
 })
 
-const User = mongoose.model('User', userSchema);
 
-const AccountSchema = new mongoose.Schema({
+
+const accountSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
         required: true
     },
     balance: {
         type: Number,
-        default: 0,
         required: true
     }
 })
 
-const Account = mongoose.model('Account', AccountSchema)
+
+const User = mongoose.model('User', userSchema)
+
+const Account = mongoose.model('Account', accountSchema)
 
 module.exports = {
     connectDB, User, Account
