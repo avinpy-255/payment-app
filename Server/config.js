@@ -1,8 +1,12 @@
-const JWT_SECRET = "putri";
-const MONGO_URI="mongodb://localhost:27017/paymodo"
+require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT;
+
 module.exports = {
     JWT_SECRET,
-    MONGO_URI
-
+    MONGO_URI,
+    PORT
 };
 
