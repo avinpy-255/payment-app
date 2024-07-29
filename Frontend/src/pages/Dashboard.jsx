@@ -3,6 +3,7 @@ import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import { Users } from "../components/Users";
 import axios from "axios";
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
 export const Dashboard = () => {
   //TODO: showing user icon
@@ -10,7 +11,7 @@ export const Dashboard = () => {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/account/balance", {
+    axios.get(`${BACKEND_API_URL}/api/v1/account/balance`, {
       headers: { 
         Authorization: "Bearer " + localStorage.getItem("token")
       }

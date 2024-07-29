@@ -6,6 +6,7 @@ import { SubHeading } from "../components/SubHeading"
 import { useNavigate } from 'react-router-dom'; 
 import { useState } from 'react'; // Import useState for managing form data
 import axios from 'axios'
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
 export const Signin = () => {
     const [userName, setUserName] = useState(" ")
@@ -17,7 +18,7 @@ export const Signin = () => {
     
         try {
           const response = await axios.post(
-            "http://localhost:8080/api/v1/user/signin",
+            `${BACKEND_API_URL}/api/v1/user/signin`,
             { userName, password },
             
           );

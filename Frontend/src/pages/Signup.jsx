@@ -6,8 +6,7 @@ import { InputBox } from "../components/InputBox"
 import { SubHeading } from "../components/SubHeading"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
-
-
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
 export const Signup = () => {
     const [firstName, setFirstName] = useState(" ")
@@ -15,7 +14,6 @@ export const Signup = () => {
     const [username, setUserName] = useState(" ")
     const [password, setPassword] = useState(" ")
     const navigate = useNavigate()
-
 
     return <div className="bg-violet-500 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
@@ -36,7 +34,7 @@ export const Signup = () => {
                 }} placeholder="12345678" label={"Password"}/>
                 <div className="pt-4">
                  <Button onClick={async () => {
-              const response = await axios.post("http://localhost:8080/api/v1/user/signup", {
+              const response = await axios.post(`${BACKEND_API_URL}/api/v1/user/signup`, {
               username,
               firstName,
               lastName,
