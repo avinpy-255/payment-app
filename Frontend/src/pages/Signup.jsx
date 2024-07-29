@@ -12,7 +12,7 @@ import axios from "axios";
 export const Signup = () => {
     const [firstName, setFirstName] = useState(" ")
     const [lastName, setLastName] = useState(" ")
-    const [userName, setUserName] = useState(" ")
+    const [username, setUserName] = useState(" ")
     const [password, setPassword] = useState(" ")
     const navigate = useNavigate()
 
@@ -22,28 +22,28 @@ export const Signup = () => {
             <div  className="rounded-lg bg-indigo-200 w-80 text-center p-2 h-max px-4">
                 <Heading label={"Sing Up"} />
                 <SubHeading label={"create account"}/>
-                <InputBox onChange={e => {
+                <InputBox onChange={(e) => {
                     setFirstName(e.target.value);
                 }} placeholder="Alex" label={"First Name"}/>
-                <InputBox onChange={e => {
+                <InputBox onChange={(e) => {
                     setLastName(e.target.value);
                 }} placeholder="Cole" label={"Last Name"}/>
-                <InputBox onChange={e => {
+                <InputBox onChange={(e) => {
                     setUserName(e.target.value);
                 }} placeholder="alexcole@gmail.com" label={"Email"}/>
-                <InputBox onChange={e => {
+                <InputBox onChange={(e) => {
                     setPassword(e.target.value);
                 }} placeholder="12345678" label={"Password"}/>
                 <div className="pt-4">
                  <Button onClick={async () => {
-            const response = await axios.post("http://localhost:8080/api/v1/user/signup", {
-              userName,
+              const response = await axios.post("http://localhost:8080/api/v1/user/signup", {
+              username,
               firstName,
               lastName,
               password
             });
             localStorage.setItem("token", response.data.token)
-            navigate("/Dashboard")}} label={"Sign up"}/>
+            navigate("/")}} label={"Sign up"}/>
                 </div>
                 <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
             </div>
