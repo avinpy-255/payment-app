@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
-
+const mongoose = require('mongoose');
+const { MONGO_URI } = require('./config');
 
 const connectDB = async () => {
-    await mongoose.connect("mongodb://localhost:27017/paymodo");
+    await mongoose.connect(MONGO_URI);
     console.log('DB connected');
 }
 
