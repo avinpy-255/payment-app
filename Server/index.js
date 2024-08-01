@@ -5,13 +5,15 @@ const cors = require("cors");
 const { PORT } = require("./config");
 const app = express();
 
-app.use(cors(
-    {
-        origin: ['https://payment-app-frontend-eight.vercel.app'],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        credentials: true
-    }
-))
+
+const corsOptions = {
+    origin: 'https://payment-app-frontend-six.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  };
+
+app.use(cors(corsOptions));
 app.use(express.json())
 
 app.get('/', (req, res) => {
