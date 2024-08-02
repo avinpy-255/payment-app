@@ -6,7 +6,9 @@ const { PORT, ORIGIN } = require("./config");
 const app = express();
 
 app.use(express.json());
-app.use (cors())
+app.use (cors({
+  header: "Access-Control-Allow-Origin"
+}))
 
 app.get("/", (req, res) => {
   res.json({
