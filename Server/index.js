@@ -7,7 +7,7 @@ const app = express();
 
 app.use (cors( {
   origin: "https://payment-app-frontend-git-main-avinpy-255s-projects.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }))
