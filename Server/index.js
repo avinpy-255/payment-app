@@ -5,12 +5,8 @@ const cors = require("cors");
 const { PORT, ORIGIN } = require("./config");
 const app = express();
 
-app.use (cors( {
-  origin: `${ORIGIN}`,
-  methods: ["GET", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}))
+app.use(express.json());
+app.use (cors())
 
 app.get("/", (req, res) => {
   res.json({
