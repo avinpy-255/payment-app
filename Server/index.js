@@ -2,11 +2,11 @@ const express = require("express");
 const mainRouter = require("./Routes/index");
 const { connectDB } = require("./database");
 const cors = require("cors");
-const { PORT } = require("./config");
+const { PORT, ORIGIN } = require("./config");
 const app = express();
 
 app.use (cors( {
-  origin: "https://payment-app-frontend-git-main-avinpy-255s-projects.vercel.app",
+  origin: `${ORIGIN}`,
   methods: ["GET", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
