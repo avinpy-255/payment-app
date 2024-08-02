@@ -5,6 +5,9 @@
      { "src": "*.js", "use": "@vercel/node" }
   ],
   "routes": [
-     { "src": "/(.*)", "dest": "/" }
+     { "src": "/(.*)",
+    "dest": "index.js",
+     "headers": { "Access-Control-Allow-Origin": "*" }
+     }
   ]
 }
