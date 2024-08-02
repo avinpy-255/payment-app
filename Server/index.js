@@ -6,7 +6,13 @@ const { PORT } = require("./config");
 const app = express();
 
 app.use(
-  cors()
+  cors(
+{    origin: [`${ORIGIN}`],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // enable cookies in requests
+}
+  )
 );
 app.use(express.json());
 
