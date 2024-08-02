@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors(
-{    origin: [`https://payment-app-frontend-six.vercel.app`],
+{    origin: ["https://payment-app-frontend-six.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // enable cookies in requests
