@@ -6,9 +6,7 @@
   ],
   "routes": [
      { "src": "/(.*)",
-    "dest": "index.js",
-     "methods": ["GET", "PUT", "DELETE"],
-     "headers": { "Access-Control-Allow-Origin": "*" }
+    "dest": "index.js"
      }
   ]
 }

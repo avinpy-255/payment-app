@@ -2,13 +2,11 @@ const express = require("express");
 const mainRouter = require("./Routes/index");
 const { connectDB } = require("./database");
 const cors = require("cors");
-const { PORT, ORIGIN } = require("./config");
+const { PORT } = require("./config");
 const app = express();
 
 app.use(express.json());
-app.use (cors({
-  header: "Access-Control-Allow-Origin"
-}))
+app.use (cors())
 
 app.get("/", (req, res) => {
   res.json({
@@ -16,7 +14,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/v1", mainRouter);
+app.use("/api/v1",  mainRouter);
 
 app.listen(PORT, () => {
   connectDB();
