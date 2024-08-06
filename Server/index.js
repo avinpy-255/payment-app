@@ -4,7 +4,7 @@ const { connectDB } = require("./database");
 const cors = require("cors");
 const { PORT } = require("./config");
 const app = express();
-
+//updated the env variable
 app.use(express.json());
 app.use (cors())
 
