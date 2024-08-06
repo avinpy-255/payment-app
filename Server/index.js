@@ -11,6 +11,13 @@ app.use (cors({
   methods: ["GET", "HEAD", "POST", "PUT", "DELETE"]
 }))
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // Replace with your frontend URL
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
+
 app.get("/", (req, res) => {
   res.json({
     message: "Hello World",
